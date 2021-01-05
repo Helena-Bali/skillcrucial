@@ -43,8 +43,8 @@ function fileExist () {
     return (JSON.parse(file))
   })  
      .catch(async () => {
-       const responce = await (await axios('https://jsonplaceholder.typicode.com/users')).
-       then(res => res.data)
+       const responce = await (axios('https://jsonplaceholder.typicode.com/users'))
+       .then(res => res.data)
        responce.sort ((a, b) => a.id - b.id)
       writeFile(`${__dirname}/users.json`, JSON.stringify(responce), {encoding: 'utf8'})
       return responce.data
